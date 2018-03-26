@@ -32,3 +32,6 @@ Reporting:   Set a time-frame and report back on how many email days, phone days
 
 Push-button to clear calendar 
 Push-button to mark as sick / unplanned in Paylocity
+
+## ERD for Data Structure
+![TT4K ERD](https://raw.githubusercontent.com/harringtonben/time-tracker-4000/master/TT4K%20ERD.png)
