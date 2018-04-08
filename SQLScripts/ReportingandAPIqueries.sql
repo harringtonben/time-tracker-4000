@@ -69,9 +69,27 @@ select s.*, e.name from Shifts s
 join Employees e on e.employeeid = s.employeeid
 where date > getdate() - 28
 and s.EmployeeId = 12
-and Email =1
-
+and Email = 1
 
 --Select all phone days for a certain supporter
+select s.*, e.name from Shifts s
+join Employees e on e.employeeid = s.employeeid
+where date > getdate() - 28
+and s.EmployeeId = 12
+and Phone = 1
 
---Report total phone and email days for a supporter
+--Report total phone days for a supporter
+select count(*) as totalphonedays, e.name from Shifts s
+join Employees e on e.employeeid = s.employeeid
+where date > getdate() - 28
+and s.EmployeeId = 12
+and Phone = 1
+group by e.Name
+
+--Report total email days for a supporter
+select count(*) as totalphonedays, e.name from Shifts s
+join Employees e on e.employeeid = s.employeeid
+where date > getdate() - 28
+and s.EmployeeId = 12
+and Email = 1
+group by e.Name
