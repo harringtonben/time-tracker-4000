@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using TimeTracker.Models;
 using TimeTracker.Services;
 
 namespace TimeTracker.Controllers
@@ -36,19 +37,5 @@ namespace TimeTracker.Controllers
 
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Unable to add shift. Please try again later.");
         }
-    }
-
-    public class ShiftDto
-    {
-        public int EmployeeId { get; set; }
-        public int ManagerId { get; set; }
-        public bool WorkFromHome { get; set; }
-        public bool Callout { get; set; }
-        public bool Planned { get; set; }
-        public int ShiftLengthId { get; set; }
-        public bool Email { get; set; }
-        public bool Phone { get; set; }
-        public bool Integrations { get; set; }
-        public bool NonCoverage { get; set; }
     }
 }

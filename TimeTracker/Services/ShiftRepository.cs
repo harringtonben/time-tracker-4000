@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using TimeTracker.Models;
 
 namespace TimeTracker.Services
 {
@@ -48,19 +49,5 @@ namespace TimeTracker.Services
         {
             return new SqlConnection(ConfigurationManager.ConnectionStrings["Main"].ConnectionString);
         }
-    }
-
-    public class Shift
-    {
-        public int EmployeeId { get; set; }
-        public int ManagerId { get; set; }
-        public bool WorkFromHome { get; set; }
-        public bool Callout { get; set; }
-        public bool Planned { get; set; }
-        public int ShiftLengthId { get; set; }
-        public bool Email { get; set; }
-        public bool Phone { get; set; }
-        public bool Integrations { get; set; }
-        public bool NonCoverage { get; set; }
     }
 }
