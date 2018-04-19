@@ -34,13 +34,13 @@ and Planned = 0
 --Select all shifts for supporters who roll up to Grey within x amount of weeks
 select s.*, e.name from Shifts s
 join Employees e on e.employeeid = s.employeeid
-where s.MangerId = 2
+where s.ManagerId = 2
 and date > getdate() - 28
 
 --Select all shifts for supporters who roll up to Katie within x amount of weeks
 select s.*, e.name from Shifts s
 join Employees e on e.employeeid = s.employeeid
-where s.MangerId = 1
+where s.ManagerId = 1
 and date > getdate() - 28
 
 --Select percentage of unplanned days vs. planned days for a supporter within x amount of weeks
