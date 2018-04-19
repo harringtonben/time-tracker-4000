@@ -37,5 +37,22 @@ namespace TimeTracker.Controllers
 
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Unable to add shift. Please try again later.");
         }
+
+        [HttpGet, Route("{id}")]
+        public HttpResponseMessage Get(int id, int timeFrame)
+        {
+            var shiftRepository = new ShiftRepository();
+            List<Shift> getAllShifts;
+
+            if (timeFrame == 0)
+            {
+                getAllShifts = shiftRepository.getAllShifts(id, 7);
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+
+            getAllShifts = shiftRepository.getAllShifts(id, timeFrame);
+            return Request.CreateResponse(HttpStatusCode.Created);
+
+        }
     }
 }

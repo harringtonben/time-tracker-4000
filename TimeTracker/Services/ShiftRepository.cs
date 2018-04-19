@@ -13,7 +13,7 @@ namespace TimeTracker.Services
     {
         public bool AddShift(Shift shift)
         {
-            using (var db = createConnection())
+            using (var db = CreateConnection())
             {
                 db.Open();
 
@@ -45,7 +45,22 @@ namespace TimeTracker.Services
             }
         }
 
-        private SqlConnection createConnection()
+        internal List<Shift> getAllShifts(int id, int timeFrame)
+        {
+            using (var db = CreateConnection())
+            {
+                db.Open();
+
+                var result = db.Query<Shift>(@"select s.*, e.name from Shifts s
+                                               join Employees e on e.employeeid = s.employeeid
+                                               where s.EmployeeId = @id
+                                               and date > getdate() - @timeFrame", new { id, timeFrame }).ToList();
+
+                return result;
+            }   
+        }
+
+        private SqlConnection CreateConnection()
         {
             return new SqlConnection(ConfigurationManager.ConnectionStrings["Main"].ConnectionString);
         }
