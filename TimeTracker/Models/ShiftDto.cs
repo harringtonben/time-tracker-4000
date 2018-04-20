@@ -8,6 +8,7 @@ namespace TimeTracker.Models
     public class ShiftDto
     {
         public int EmployeeId { get; set; }
+        public DateTime Date { get; set; }
         public int ManagerId { get; set; }
         public bool WorkFromHome { get; set; }
         public bool Callout { get; set; }

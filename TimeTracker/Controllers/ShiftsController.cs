@@ -47,11 +47,11 @@ namespace TimeTracker.Controllers
             if (timeFrame == 0)
             {
                 getAllShifts = shiftRepository.getAllShifts(id, 7);
-                return Request.CreateResponse(HttpStatusCode.Created);
+                return Request.CreateResponse(HttpStatusCode.OK, getAllShifts);
             }
 
             getAllShifts = shiftRepository.getAllShifts(id, timeFrame);
-            return Request.CreateResponse(HttpStatusCode.Created);
+            return Request.CreateResponse(HttpStatusCode.OK, getAllShifts);
 
         }
     }
