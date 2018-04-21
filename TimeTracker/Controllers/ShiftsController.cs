@@ -54,5 +54,22 @@ namespace TimeTracker.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, getAllShifts);
 
         }
+
+        [HttpGet, Route("{id}/workfromhome")]
+        public HttpResponseMessage GetWfh(int id, int timeFrame)
+        {
+            var shiftRepository = new ShiftRepository();
+            List<Shift> getWfhShifts;
+
+            if (timeFrame == 0)
+            {
+                getWfhShifts = shiftRepository.GetWfhShifts(id, 7);
+                return Request.CreateResponse(HttpStatusCode.OK, getWfhShifts);
+            }
+
+            getWfhShifts = shiftRepository.GetWfhShifts(id, timeFrame);
+            return Request.CreateResponse(HttpStatusCode.OK, getWfhShifts);
+
+        }
     }
 }

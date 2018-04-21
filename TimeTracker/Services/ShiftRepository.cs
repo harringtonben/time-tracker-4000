@@ -45,7 +45,7 @@ namespace TimeTracker.Services
             }
         }
 
-        internal List<Shift> getAllShifts(int id, int timeFrame)
+        public List<Shift> getAllShifts(int id, int timeFrame)
         {
             using (var db = CreateConnection())
             {
@@ -58,6 +58,22 @@ namespace TimeTracker.Services
 
                 return result;
             }   
+        }
+
+        public List<Shift> GetWfhShifts(int id, int timeFrame)
+        {
+            using (var db = CreateConnection())
+            {
+                db.Open();
+
+                var result = db.Query<Shift>(@"select s.*, e.name from Shifts s
+                                               join Employees e on e.employeeid = s.employeeid
+                                               where s.EmployeeId = @id
+                                               and date > getdate() - @timeFrame
+                                               and WorkFromHome = 1", new { id, timeFrame}).ToList();
+
+                return result;
+            }
         }
 
         private SqlConnection CreateConnection()
